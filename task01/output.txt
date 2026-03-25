@@ -1,0 +1,8 @@
+# insmod hello.ko
+# dmesg|tail
+[2498446.708911] [T1062385] Hello world! Kernel module loaded 
+[2498446.708921] [T1062385] Kernel module loaded 
+
+# rmmod hello
+# dmesg|tail
+[2499461.155464] [T1062806] Kernel module unloaded 
