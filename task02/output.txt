@@ -1,0 +1,4 @@
+# cat /lib/modules/6.19.0-11773-g8bf22c33e7a1/build/.config | grep "CONFIG_LOCALVERSION_AUTO"
+
+CONFIG_LOCALVERSION_AUTO=y
+
