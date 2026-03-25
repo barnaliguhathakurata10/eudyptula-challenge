@@ -1,0 +1,21 @@
+# dmesg|tail
+[2512647.638095] [T1069875] Creating the devices...
+
+# ls /sys/kernel/debug/eudyptula
+foo  id  jiffies
+
+//reading the file
+# cat /sys/kernel/debug/eudyptula/id
+Barnali Guha Thakurata
+
+//giving error as the input is not exactly same as MY_ID
+# echo "Barnali" > /sys/kernel/debug/eudyptula/id
+-bash: echo: write error: Invalid argument
+
+//no error as the input is exacly same as MY_ID
+# echo "Barnali Guha Thakurata" > /sys/kernel/debug/eudyptula/id
+
+//giving error as the input is not exactly same as MY_ID
+# echo "Barnali Guha Thakuratax" > /sys/kernel/debug/eudyptula/id
+-bash: echo: write error: Invalid argument
+

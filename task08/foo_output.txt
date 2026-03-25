@@ -1,0 +1,39 @@
+# dmesg|tail
+[2512647.638095] [T1069875] Creating the devices...
+
+# ls /sys/kernel/debug/eudyptula
+foo  id  jiffies
+
+//reading the file but no output as nothing is stored yet
+# cat /sys/kernel/debug/eudyptula/foo
+
+//writing the file
+# echo "Barnali Guha Thakuratax" > /sys/kernel/debug/eudyptula/foo
+
+//reading the file again-> now showing the last stored data
+# cat /sys/kernel/debug/eudyptula/foo
+Barnali Guha Thakuratax
+
+
+//getting the page size of the system
+# getconf PAGE_SIZE
+65536
+
+
+//writing data even bigger than the buffer -> hence it fails and nothing gets stored
+# python3 -c 'print("A"*65536)' | sudo tee /sys/kernel/debug/eudyptula/foo
+AAAA...AAAAA
+
+//reading  again -> but no output as the data last entered was bigger than buffer allocated
+# cat /sys/kernel/debug/eudyptula/foo
+
+
+
+//writing data within the buffer
+# python3 -c 'print("B"*65535)' | sudo tee /sys/kernel/debug/eudyptula/foo
+BBBB...BBBB
+
+//reading the file again-> now showing the last stored data
+# cat /sys/kernel/debug/eudyptula/foo
+BBBB...BBBB
+

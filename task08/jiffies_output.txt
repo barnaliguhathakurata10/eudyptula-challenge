@@ -1,0 +1,15 @@
+# dmesg|tail
+[2512647.638095] [T1069875] Creating the devices...
+
+# ls /sys/kernel/debug/eudyptula
+foo  id  jiffies
+
+//jiffies= kernel boot counter therefore the value keeps increasing everytime we read the file
+
+# cat /sys/kernel/debug/eudyptula/jiffies
+2515879380
+# cat /sys/kernel/debug/eudyptula/jiffies
+2515881943
+# cat /sys/kernel/debug/eudyptula/jiffies
+2515884122
+
